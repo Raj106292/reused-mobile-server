@@ -17,6 +17,13 @@ const run = async () => {
     try {
         const usersCollection = client.db('reused_project').collection('users');
         const productsCollection = client.db('reused_project').collection('products');
+        const bookingsCollection = client.db('reused_project').collection('bookings');
+
+        app.post('/bookings', async(req, res) => {
+            const bookingData = req.body;
+            const result = await bookingsCollection.insertOne(bookingData);
+            res.send(result);
+        })
 
         app.get('/category', async (req, res) => {
             const filter = {};
@@ -27,7 +34,7 @@ const run = async () => {
         app.get('/category/:id', async (req, res) => {
             const id = req.params.id;
             const filter = { categoryId: id };
-            const categoryItems = await productsCollection.find(filter).toArray();
+            const categoryItems = await productsCollection.findOne(filter);
             res.send(categoryItems);
         })
 
@@ -40,7 +47,6 @@ const run = async () => {
                 $set: user,
             }
             const result = await usersCollection.updateOne(filter, updatedDoc, options);
-            console.log(result);
 
             // generate jwt token
             const token = jwt.sign(user, process.env.RMI_TOKEN, { expiresIn: '2d' });
