@@ -16,6 +16,14 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 const run = async () => {
     try {
         const usersCollection = client.db('reused_project').collection('users');
+        const productsCollection = client.db('reused_project').collection('products');
+
+        app.get('/category/:id',async(req, res) => {
+            const id = req.params.id;
+            const filter = {categoryId: id};
+            const category = await productsCollection.find(filter).toArray();
+            res.send(category);
+        })
 
         app.put('/user/:email', async (req, res) => {
             const email = req.params.email;
