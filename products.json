@@ -1,0 +1,200 @@
+[
+    {
+        "categoryId": "101010",
+        "brand": "apple",
+        "brandLogo": "https://miuc.org/wp-content/uploads/2016/12/apple-intro.jpg",
+        "product": [
+            {
+                "model": "iphone 12 pro",
+                "variant": "12/512",
+                "price": "80000",
+                "condition": "good",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://media.cnn.com/api/v1/images/stellar/prod/201019232111-14-underscored-iphone-12-pro-review.jpg?q=w_2608,h_1548,x_0,y_0,c_fill",
+                "purchaseYear": "2021",
+                "status": "available",
+                "sellerPhone": "01234567892",
+                "sellerLocation": "Dhaka",
+                "sellerEmail": "web2@ph.com"
+            },
+            {
+                "model": "iphone 13 pro",
+                "variant": "12/512",
+                "price": "110000",
+                "condition": "excellent",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://cdn.mos.cms.futurecdn.net/BHiwWkpNWGCUmuA5g66Dgi.jpg",
+                "purchaseYear": "2022",
+                "status": "available",
+                "sellerPhone": "01234567893",
+                "sellerLocation": "Chittagong",
+                "sellerEmail": "web3@ph.com"
+            }
+        ]
+    },
+    {
+        "categoryId": "202020",
+        "brand": "samsung",
+        "brandLogo": "https://static.youthop.com/uploads/sites/2/2019/09/samsung-logo.jpg",
+        "product": [
+            {
+                "model": "A-51",
+                "variant": "4/64",
+                "price": "43000",
+                "condition": "fair",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://c.ndtvimg.com/2020-02/si15e5g8_gadgets-360_640x480_03_February_20.jpg?downsize=400:300&output-quality=80",
+                "purchaseYear": "2022",
+                "status": "available",
+                "sellerPhone": "01234567893",
+                "sellerLocation": "Chittagong",
+                "sellerEmail": "web3@ph.com"
+            },
+            {
+                "model": "z-fold 4",
+                "variant": "12/256",
+                "price": "150000",
+                "condition": "good",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://cdn.mos.cms.futurecdn.net/Tqxw4bpcQJNxvu7TeXQAG5.jpg",
+                "purchaseYear": "2021",
+                "status": "available",
+                "sellerPhone": "01234567892",
+                "sellerLocation": "Dhaka",
+                "sellerEmail": "web2@ph.com"
+            }
+        ]
+    },
+    {
+        "categoryId": "303030",
+        "brand": "xiaomi",
+        "brandLogo": "https://fdn.gsmarena.com/imgroot/news/21/03/xiaomi-new-logo/-1200/gsmarena_004.jpg",
+        "product": [
+            {
+                "model": "note-10",
+                "variant": "6/256",
+                "price": "24000",
+                "condition": "good",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://images.anandtech.com/doci/16524/X-T30_DSF4322_678x452.jpg",
+                "purchaseYear": "2021",
+                "status": "available",
+                "sellerPhone": "01234567892",
+                "sellerLocation": "Dhaka",
+                "sellerEmail": "web2@ph.com"
+            },
+            {
+                "model": "12 Ultra",
+                "variant": "12/512",
+                "price": "100000",
+                "condition": "excellent",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://www.yankodesign.com/images/design_news/2022/07/xiaomi-12s-ultra-brings-dslr-quality-photography-to-your-palm/Xiaomi-S12-Ultra-Phone-19.jpg",
+                "purchaseYear": "2022",
+                "status": "available",
+                "sellerPhone": "01234567893",
+                "sellerLocation": "Chittagong",
+                "sellerEmail": "web3@ph.com"
+            }
+        ]
+    },
+    {
+        "categoryId": "404040",
+        "brand": "vivo",
+        "brandLogo": "https://www.channelinfoline.com/wp-content/uploads/2017/12/Vivo-Logo.jpg",
+        "product": [
+            {
+                "model": "y20",
+                "variant": "4/64",
+                "price": "33000",
+                "condition": "fair",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://techprolonged.com/wp-content/uploads/2020/10/Vivo-Y20-Review-11-1030x536.jpg",
+                "purchaseYear": "2020",
+                "status": "available",
+                "sellerPhone": "01234567893",
+                "sellerLocation": "Chittagong",
+                "sellerEmail": "web3@ph.com"
+            },
+            {
+                "model": "y22",
+                "variant": "4/64",
+                "price": "53000",
+                "condition": "good",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://assets.promediateknologi.com/crop/0x0:0x0/x/photo/2022/10/12/647416701.jpg",
+                "purchaseYear": "2021",
+                "status": "available",
+                "sellerPhone": "01234567892",
+                "sellerLocation": "Dhaka",
+                "sellerEmail": "web2@ph.com"
+            }
+        ]
+    },
+    {
+        "categoryId": "505050",
+        "brand": "oppo",
+        "brandLogo": "https://futurestartup.com/wp-content/uploads/2019/05/Photo_OPPO-revamps-Brand-Identity.jpg",
+        "product": [
+            {
+                "model": "a57",
+                "variant": "4/64",
+                "price": "31000",
+                "condition": "excellent",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://www.iphone-droid.net/wp-content/uploads/2022/06/Review-OPPOA57-03.jpg",
+                "purchaseYear": "2019",
+                "status": "available",
+                "sellerPhone": "01234567892",
+                "sellerLocation": "Dhaka",
+                "sellerEmail": "web2@ph.com"
+            },
+            {
+                "model": "reno 8 pro",
+                "variant": "4/64",
+                "price": "41000",
+                "condition": "good",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://www.mobilereviewnepal.com/wp-content/uploads/2022/08/Oppo-Reno-8-Pro-Review.jpg",
+                "purchaseYear": "2021",
+                "status": "available",
+                "sellerPhone": "01234567893",
+                "sellerLocation": "Chittagong",
+                "sellerEmail": "web3@ph.com"
+            }
+        ]
+    },
+    {
+        "categoryId": "606060",
+        "brand": "techno",
+        "brandLogo": "https://stgnepal.files.wordpress.com/2018/04/gadgetstripe-com-tecno-logo.jpg",
+        "product": [
+            {
+                "model": "pova 4 pro",
+                "variant": "4/64",
+                "price": "19000",
+                "condition": "excellent",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://assets.promediateknologi.com/crop/0x0:0x0/750x500/photo/2022/11/03/2352565114.png",
+                "purchaseYear": "2021",
+                "status": "available",
+                "sellerPhone": "01234567893",
+                "sellerLocation": "Chittagong",
+                "sellerEmail": "web3@ph.com"
+            },
+            {
+                "model": "spark 7 pro",
+                "variant": "4/64",
+                "price": "25000",
+                "condition": "excellent",
+                "description": "phone condition is good and no dents on the phone and no scratches on display",
+                "image": "https://manilashaker.com/wp-content/uploads/2021/09/9-2.jpg",
+                "purchaseYear": "2022",
+                "status": "available",
+                "sellerPhone": "01234567892",
+                "sellerLocation": "Dhaka",
+                "sellerEmail": "web2@ph.com"
+            }
+        ]
+    }
+]

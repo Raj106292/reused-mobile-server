@@ -18,11 +18,17 @@ const run = async () => {
         const usersCollection = client.db('reused_project').collection('users');
         const productsCollection = client.db('reused_project').collection('products');
 
-        app.get('/category/:id',async(req, res) => {
+        app.get('/category', async (req, res) => {
+            const filter = {};
+            const categories = await productsCollection.find(filter).toArray();
+            res.send(categories);
+        })
+
+        app.get('/category/:id', async (req, res) => {
             const id = req.params.id;
-            const filter = {categoryId: id};
-            const category = await productsCollection.find(filter).toArray();
-            res.send(category);
+            const filter = { categoryId: id };
+            const categoryItems = await productsCollection.find(filter).toArray();
+            res.send(categoryItems);
         })
 
         app.put('/user/:email', async (req, res) => {
@@ -31,16 +37,16 @@ const run = async () => {
             const filter = { email: email };
             const options = { upsert: true };
             const updatedDoc = {
-              $set: user,
+                $set: user,
             }
             const result = await usersCollection.updateOne(filter, updatedDoc, options);
             console.log(result);
 
             // generate jwt token
-            const token = jwt.sign(user, process.env.RMI_TOKEN, { expiresIn: '2d' })
+            const token = jwt.sign(user, process.env.RMI_TOKEN, { expiresIn: '2d' });
 
             res.send({ result, token });
-          });
+        });
     }
     finally {
 
