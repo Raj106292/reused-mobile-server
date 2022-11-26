@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -36,6 +36,13 @@ const run = async () => {
         const productsCollection = client.db('reused_project').collection('products');
         const bookingsCollection = client.db('reused_project').collection('bookings');
 
+        app.delete('/bookings/:id', async(req, res) => {
+            const id = req.params.id;
+            const filter = {_id: ObjectId(id)};
+            const result = await bookingsCollection.deleteOne(filter);
+            res.send(result);
+        })
+
         app.get('/bookings', verifyJWT, async (req, res) => {
             const userEmail = req.query.email;
 
@@ -66,6 +73,13 @@ const run = async () => {
             const filter = { categoryId: id };
             const categoryItems = await productsCollection.findOne(filter);
             res.send(categoryItems);
+        })
+
+        app.get('/user', async(req, res) => {
+            const email = req.query.email
+            const filter = {email: email};
+            const result = await usersCollection.findOne(filter);
+            res.send(result);
         })
 
         app.put('/user/:email', async (req, res) => {
