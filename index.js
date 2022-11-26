@@ -13,21 +13,43 @@ app.use(express.json());
 const uri = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.tkcvter.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
+const verifyJWT = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+        return res.status(401).send('unauthorized access');
+    }
+
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, process.env.RMI_TOKEN, (err, decoded) => {
+        if (err) {
+            return res.status(403).send({ message: 'forbidden access' })
+        }
+        req.decoded = decoded;
+        next();
+    })
+};
+
 const run = async () => {
     try {
         const usersCollection = client.db('reused_project').collection('users');
         const productsCollection = client.db('reused_project').collection('products');
         const bookingsCollection = client.db('reused_project').collection('bookings');
 
-        app.get('/bookings', async(req, res) => {
+        app.get('/bookings', verifyJWT, async (req, res) => {
             const userEmail = req.query.email;
-            const filter = {email: userEmail};
+
+            const decodedEmail = req.decoded.email;
+            if (userEmail !== decodedEmail) {
+                return res.status(403).send({ message: 'forbidden access' });
+            };
+
+            const filter = { email: userEmail };
             const result = await bookingsCollection.find(filter).toArray();
             res.send(result);
-            console.log(result);
         })
 
-        app.post('/bookings', async(req, res) => {
+        app.post('/bookings', async (req, res) => {
             const bookingData = req.body;
             const result = await bookingsCollection.insertOne(bookingData);
             res.send(result);
