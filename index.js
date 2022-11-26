@@ -19,6 +19,14 @@ const run = async () => {
         const productsCollection = client.db('reused_project').collection('products');
         const bookingsCollection = client.db('reused_project').collection('bookings');
 
+        app.get('/bookings', async(req, res) => {
+            const userEmail = req.query.email;
+            const filter = {email: userEmail};
+            const result = await bookingsCollection.find(filter).toArray();
+            res.send(result);
+            console.log(result);
+        })
+
         app.post('/bookings', async(req, res) => {
             const bookingData = req.body;
             const result = await bookingsCollection.insertOne(bookingData);
