@@ -36,9 +36,20 @@ const run = async () => {
         const productsCollection = client.db('reused_project').collection('products');
         const bookingsCollection = client.db('reused_project').collection('bookings');
 
-        app.delete('/bookings/:id', async(req, res) => {
+        const verifySeller = async (req, res, next) => {
+            const decodedEmail = req.decoded.email;
+            const query = { email: decodedEmail };
+            const user = await usersCollection.findOne(query);
+
+            if (user?.status !== 'seller') {
+                return res.status(403).send('unauthorized access');
+            };
+            next();
+        }
+
+        app.delete('/bookings/:id', async (req, res) => {
             const id = req.params.id;
-            const filter = {_id: ObjectId(id)};
+            const filter = { _id: ObjectId(id) };
             const result = await bookingsCollection.deleteOne(filter);
             res.send(result);
         })
@@ -62,6 +73,45 @@ const run = async () => {
             res.send(result);
         })
 
+        app.get('/users/seller/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { email: email };
+            const user = await usersCollection.findOne(query);
+            res.send({ isSeller: user?.status === 'seller' });
+        })
+
+        app.get('/products/:email', verifyJWT, verifySeller, async (req, res) => {
+            const email = req.params.email;
+            const result = await productsCollection.aggregate([
+                {
+                    $match: {
+                        "product.sellerEmail": email,
+                    }
+                },
+                {
+                    $project: {
+                        product: {
+                            $filter: {
+                                input: "$product",
+                                as: "product",
+                                cond: { $eq: ["$$product.sellerEmail", email] }
+                            }
+                        },
+                        "_id": 1
+                    }
+                },
+                {
+                    $unwind: "$product"
+                },
+                {
+                    "$replaceRoot": {
+                        "newRoot": "$product"
+                    }
+                }
+            ]).toArray();
+            res.send(result);
+        })
+
         app.get('/category', async (req, res) => {
             const filter = {};
             const categories = await productsCollection.find(filter).toArray();
@@ -75,9 +125,9 @@ const run = async () => {
             res.send(categoryItems);
         })
 
-        app.get('/user', async(req, res) => {
+        app.get('/user', async (req, res) => {
             const email = req.query.email
-            const filter = {email: email};
+            const filter = { email: email };
             const result = await usersCollection.findOne(filter);
             res.send(result);
         })
