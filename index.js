@@ -112,6 +112,26 @@ const run = async () => {
             res.send(result);
         })
 
+        app.patch('/new-product', async(req, res) => {
+            const brandValue = req.query.brands;
+            const productData = req.body;
+            const filter = {brand: brandValue};
+            const result = await productsCollection.updateOne(filter, {$push: { product: productData}})
+            res.send(result);
+        })
+
+        app.patch('/products', async (req, res) => {
+            const model = req.body;
+            const filter = {'product.model': model.name}
+            const updatedDoc = {
+                $set: {
+                    'product.$.status': 'stock out'
+                }
+            }
+            const result = await productsCollection.updateOne(filter, updatedDoc);
+            res.send(result);
+        })
+
         app.get('/category', async (req, res) => {
             const filter = {};
             const categories = await productsCollection.find(filter).toArray();
